@@ -232,6 +232,9 @@ def logout():
     response = app.make_response(redirect(request.referrer))
     session.pop('user', None)
     return response
+@app.route('/newfunction')
+def newfunction():
+    return 'This is new function'
 
 # a helper function for asyncio.gather, does not return a value
 
@@ -386,4 +389,5 @@ if __name__ == '__main__':
 
     p = int(sys.argv[1])
     logging.info("start at port %s" % (p))
+    app.run(host='::', port=p, debug=True, threaded=True)
     app.run(host='::', port=p, debug=True, threaded=True)
